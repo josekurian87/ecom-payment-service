@@ -1,6 +1,5 @@
 package com.secor.fdamenuservice;
 
-import org.springframework.beans.factory.UnsatisfiedDependencyException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.netflix.eureka.EurekaDiscoveryClient;
@@ -10,7 +9,6 @@ import org.springframework.retry.backoff.FixedBackOffPolicy;
 import org.springframework.retry.policy.SimpleRetryPolicy;
 import org.springframework.retry.support.RetryTemplate;
 import org.springframework.web.reactive.function.client.WebClient;
-import org.springframework.retry.RetryException;
 
 
 import java.util.List;
@@ -27,15 +25,32 @@ public class AppConfig {
         if (instances.isEmpty()) {
             throw new RuntimeException("No instances found for "+serviceName);
         }
-        return instances.get(0);
+        return instances.get(0); // LOAD BALANCING ALGORITHM WILL GO HERE
     }
 
-    @Bean("profile_service_get_restros")
-    public WebClient webClientProfileService(WebClient.Builder webClientBuilder, RetryTemplate retryTemplate)
-    {
+//    @Bean("profile_service_get_restros")
+//    public WebClient webClientProfileService(WebClient.Builder webClientBuilder, RetryTemplate retryTemplate)
+//    {
+//
+//        return retryTemplate.execute(context -> {
+//            try {
+//                ServiceInstance instance = getServiceInstance("fda-profile-service");
+//                String hostname = instance.getHost();
+//                int port = instance.getPort();
+//
+//                return webClientBuilder
+//                        .baseUrl("http://"+hostname+":"+port+"/api/v1/get/restros")
+//                        .filter(new LoggingWebClientFilter())
+//                        .build();
+//            } catch (UnsatisfiedDependencyException e) {
+//                throw new RetryException("Dependency not available yet", e);
+//            }
+//        });
+//    }
 
-        return retryTemplate.execute(context -> {
-            try {
+    @Bean("profile_service_get_restros")
+    public WebClient webClientProfileService( WebClient.Builder webClientBuilder)
+    {
                 ServiceInstance instance = getServiceInstance("fda-profile-service");
                 String hostname = instance.getHost();
                 int port = instance.getPort();
@@ -44,11 +59,8 @@ public class AppConfig {
                         .baseUrl("http://"+hostname+":"+port+"/api/v1/get/restros")
                         .filter(new LoggingWebClientFilter())
                         .build();
-            } catch (UnsatisfiedDependencyException e) {
-                throw new RetryException("Dependency not available yet", e);
-            }
-        });
     }
+
 
     @Bean
     public RetryTemplate retryTemplate() {
