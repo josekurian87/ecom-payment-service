@@ -1,4 +1,4 @@
-package com.secor.fdamenuservice;
+package com.secor.ecomcustomerservice;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

@@ -1,4 +1,4 @@
-package com.secor.fdamenuservice;
+package com.secor.ecomcustomerservice;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

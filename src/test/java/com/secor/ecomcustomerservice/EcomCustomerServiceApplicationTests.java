@@ -1,10 +1,9 @@
-package com.secor.fdamenuservice;
+package com.secor.ecomcustomerservice;
 
-import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class FdaMenuServiceApplicationTests {
+class EcomCustomerServiceApplicationTests {
 
     //@Test
     void contextLoads() {

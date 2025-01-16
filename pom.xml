@@ -9,10 +9,10 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.secor</groupId>
-    <artifactId>fda-menu-service</artifactId>
+    <artifactId>ecom-customer-service</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>fda-menu-service</name>
-    <description>fda-menu-service</description>
+    <name>ecom-customer-service</name>
+    <description>ecom-customer-service</description>
     <url/>
     <licenses>
         <license/>
@@ -89,6 +89,15 @@
             <artifactId>lombok</artifactId>
             <version>1.18.34</version>
             <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.datatype</groupId>
+            <artifactId>jackson-datatype-jsr310</artifactId>
+            <version>2.15.3</version> <!-- Use appropriate version -->
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.kafka</groupId>
+            <artifactId>spring-kafka</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.retry</groupId>

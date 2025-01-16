@@ -1,4 +1,4 @@
-package com.secor.fdamenuservice;
+package com.secor.ecomcustomerservice;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.ServiceInstance;
@@ -48,35 +48,35 @@ public class AppConfig {
 //        });
 //    }
 
-    @Bean("profile_service_get_restros")
-    public WebClient webClientProfileService( WebClient.Builder webClientBuilder)
-    {
-                ServiceInstance instance = getServiceInstance("fda-profile-service");
-                String hostname = instance.getHost();
-                int port = instance.getPort();
-
-                return webClientBuilder
-                        .baseUrl("http://"+hostname+":"+port+"/api/v1/get/restros")
-                        .filter(new LoggingWebClientFilter())
-                        .build();
-    }
-
-
-    @Bean
-    public RetryTemplate retryTemplate() {
-        RetryTemplate retryTemplate = new RetryTemplate();
-
-        FixedBackOffPolicy backOffPolicy = new FixedBackOffPolicy();
-        backOffPolicy.setBackOffPeriod(2000); // 2 seconds
-
-        SimpleRetryPolicy retryPolicy = new SimpleRetryPolicy();
-        retryPolicy.setMaxAttempts(150); // Will try for 1 minute
-
-        retryTemplate.setBackOffPolicy(backOffPolicy);
-        retryTemplate.setRetryPolicy(retryPolicy);
-
-        return retryTemplate;
-    }
+//    @Bean("profile_service_get_restros")
+//    public WebClient webClientProfileService( WebClient.Builder webClientBuilder)
+//    {
+//                ServiceInstance instance = getServiceInstance("fda-profile-service");
+//                String hostname = instance.getHost();
+//                int port = instance.getPort();
+//
+//                return webClientBuilder
+//                        .baseUrl("http://"+hostname+":"+port+"/api/v1/get/restros")
+//                        .filter(new LoggingWebClientFilter())
+//                        .build();
+//    }
+//
+//
+//    @Bean
+//    public RetryTemplate retryTemplate() {
+//        RetryTemplate retryTemplate = new RetryTemplate();
+//
+//        FixedBackOffPolicy backOffPolicy = new FixedBackOffPolicy();
+//        backOffPolicy.setBackOffPeriod(2000); // 2 seconds
+//
+//        SimpleRetryPolicy retryPolicy = new SimpleRetryPolicy();
+//        retryPolicy.setMaxAttempts(150); // Will try for 1 minute
+//
+//        retryTemplate.setBackOffPolicy(backOffPolicy);
+//        retryTemplate.setRetryPolicy(retryPolicy);
+//
+//        return retryTemplate;
+//    }
 
 
 }
