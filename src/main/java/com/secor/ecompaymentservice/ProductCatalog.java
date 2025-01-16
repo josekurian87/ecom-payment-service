@@ -1,4 +1,4 @@
-package com.secor.ecomcustomerservice;
+package com.secor.ecompaymentservice;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -7,19 +7,20 @@ import jakarta.persistence.Id;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 @Entity
 @Getter @Setter
-public class Customers {
+public class ProductCatalog {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long customerId;
+    private Long productId;
 
-    private String firstName;
-    private String lastName;
-    private String email;
-    private String phoneNumber;
+    private String productName;
+    private String description;
+    private BigDecimal price;
+    private String category;
 
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;

@@ -1,9 +1,9 @@
-package com.secor.ecomcustomerservice;
+package com.secor.ecompaymentservice;
 
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class EcomCustomerServiceApplicationTests {
+class EcomPaymentServiceApplicationTests {
 
     //@Test
     void contextLoads() {

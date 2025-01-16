@@ -1,4 +1,4 @@
-package com.secor.ecomcustomerservice;
+package com.secor.ecompaymentservice;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
