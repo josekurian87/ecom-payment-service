@@ -20,9 +20,5 @@ public class Payments {
     private String paymentMethod;
     private String status;
 
-    @ManyToOne
-    @JoinColumn(name = "orderId", insertable = false, updatable = false)
-    private Orders order;
-
     // Getters and Setters
 }
