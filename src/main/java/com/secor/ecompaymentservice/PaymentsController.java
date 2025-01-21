@@ -18,6 +18,11 @@ public class PaymentsController {
         return paymentsRepository.findAll();
     }
 
+    @GetMapping("/order/{orderId}")
+    public Payments getPaymentForOrderId(@PathVariable Long orderId) {
+        return paymentsRepository.findByOrderId(orderId);
+    }
+
     @GetMapping("/{id}")
     public Payments getPaymentById(@PathVariable Long id) {
         return paymentsRepository.findById(id).orElseThrow();
